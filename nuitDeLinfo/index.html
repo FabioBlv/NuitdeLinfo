@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8"/>
+    <title>CIda</title>
+    <link rel="stylesheet" href="style.css"></link>
+    <script type="text/javascript" src="./script.js" async></script>
+ <script>
+    let currentDroppable = null;
+
+    ball.onmousedown = function(event) {
+
+      let shiftX = event.clientX - ball.getBoundingClientRect().left;
+      let shiftY = event.clientY - ball.getBoundingClientRect().top;
+
+      ball.style.position = 'absolute';
+      ball.style.zIndex = 1000;
+      document.body.append(ball);
+
+      moveAt(event.pageX, event.pageY);
+
+      function moveAt(pageX, pageY) {
+        ball.style.left = pageX - shiftX + 'px';
+        ball.style.top = pageY - shiftY + 'px';
+      }
+
+      function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+
+        ball.hidden = true;
+        let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+        ball.hidden = false;
+
+        if (!elemBelow) return;
+
+        let droppableBelow = elemBelow.closest('.droppable');
+        if (currentDroppable != droppableBelow) {
+          if (currentDroppable) { // null lorsque nous étions sur un élément déposable avant cet évènement
+            leaveDroppable(currentDroppable);
+          }
+          currentDroppable = droppableBelow;
+          if (currentDroppable) { // null si nous ne n'atterrissions pas sur un élément déposable maintenant
+            // (peut être a juste quitte l'objet déposable)
+            enterDroppable(currentDroppable);
+          }
+        }
+      }
+
+      document.addEventListener('mousemove', onMouseMove);
+
+      ball.onmouseup = function() {
+        document.removeEventListener('mousemove', onMouseMove);
+        ball.onmouseup = null;
+      };
+
+    };
+
+    function enterDroppable(elem) {
+      elem.style.background = 'pink';
+    }
+
+    function leaveDroppable(elem) {
+      elem.style.background = '';
+    }
+
+    ball.ondragstart = function() {
+      return false;
+    };
+  </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="./Lemon.png" />
+  </head>
+
+  <body>
+    <header>
+        <nav>
+            <div id="nav-container">
+                <input type="checkbox" id="checkbox"/>
+                    <div id="hamburger">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
+                    <div id="menu">
+                        <ul>
+                          <li><a href="index.html">Page d'accueil</a></li>
+                          <li><a href="Formulaire.html">Refus Gravissime<br> des Pim's Dociles</a></li>
+                          <li><a href="legal.html">Mentions Légales</a></li>
+                        </ul>
+                    </div>
+            </div>
+            <h1><a href="index.html"><span id="jaune">CI</span>da</a></h1>  
+            <div id="citron"></div>
+        </nav>
+    </header>
+
+    <main>
+      <body>
+        <div class="card">
+          <div class="incard">
+          </div>
+          <div class="resultat">
+            <div class="question">
+            </div>
+            <div class="score">
+            </div>
+          </div>
+        </div>
+        <div class="reponsecase">
+          <div class="case" id="case1">
+            <p></p>
+          </div>
+          <div class="case" id="case2">
+            <p></p>
+          </div>
+          <div class="reponse">
+              <p></p>
+          </div>
+          </div>
+        </body>
+    </main>
+    <a href="Formulaire.html">Mentions légales</a>
+    <footer>
+        <p>©LesCitrons | Audran M, Fabio B, Léa B, Lucas G, Lucas S, Luka L, Timon F, Valérie S</p>
+    </footer>
+  </body>
+
+</html>

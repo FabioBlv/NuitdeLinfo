@@ -1,0 +1,329 @@
+#ball{
+    background-image: url('eco.png');
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+}
+
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('./helveticaBold.ttf');
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-color: #FDF6F0;  
+    user-select: none;
+    font-family: 'Helvetica';
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-family: helvetica;
+    font-weight: bold;
+}
+
+footer p{
+    margin: 0;
+    text-align: right;
+    font-size: small;
+    opacity: 70%;
+}
+
+#board, #title{
+    margin: 2em 20em 0.1em 20em;
+    background-color:#fff0bc;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border : 0.5px solid black;
+}
+
+input, select, textarea{
+    border-radius: 0.2em;
+}
+
+.survey{
+    border-radius: 1em;
+    background-color: #fefee0;
+    margin: 1em;    
+    border: 0.5px solid black;
+}
+
+#title{
+    font-size:1.5em;
+    text-align: center;
+}
+
+
+#tickbox{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.survey{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background-color: #FFE2E2;
+}
+
+.reponsecase {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+    
+
+.case {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 2rem;
+    width: 18rem;
+    height: 30rem;
+    border-radius: 1rem;
+    box-shadow: rgba(164, 129, 129, 0.25) 0px 30px 60px -12px inset, rgba(247, 132, 132, 0.3) 0px 18px 36px -18px inset;
+}
+
+#case2{
+    grid-column-start: 3;
+}
+
+.case p{
+    text-align: center;
+    margin-top: 5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.reponse p{
+    text-align: center;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.card {
+    position: absolute;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 15rem;
+    height: 25rem;
+    border-radius: 1rem;
+    border: 0.6rem rgba(0, 0, 0, 0.25) solid;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    background-color: #fff0bc;
+    
+}
+
+.incard{
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+.resultat{
+    font-size: 1.1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    border-radius: 1rem ;
+    border: 0.01rem solid grey;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 10px 0px, rgba(0, 0, 0, 0.06) 0px 5px 10px 0px;
+}
+
+.resultat div{
+    text-align: center;
+}
+
+.resultat div:first-child{
+    margin-top: 1.2rem;
+    vertical-align: center;
+}
+
+.reponse {
+    background-color: #fefee0;
+    grid-column: span 3;
+    height: 6rem;
+    border-radius: 1rem ;
+    border: 0.01rem solid grey;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 10px 0px, rgba(0, 0, 0, 0.06) 0px 5px 10px 0px;
+}
+
+#legale{
+font-size: 1rem;  
+text-decoration: underline;  
+
+}
+
+nav {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+#nav-container #checkbox {
+    position: absolute;
+    display: block;
+    height: 100px;
+    width: 33vw;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#hamburger {
+    display: block;
+    height: 26px;
+    width: 32px;
+    top: 17px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#nav-container .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: #0e2431;
+    z-index:1000;
+}
+  
+#nav-container  .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+}
+  
+#nav-container .line2 {
+    transition: transform 0.2s ease-in-out;
+}
+  
+#nav-container .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+#nav-container input[type="checkbox"]:checked ~ #hamburger .line1 {
+    transform: rotate(45deg);
+}
+
+#nav-container input[type="checkbox"]:checked ~ #hamburger .line2 {
+    transform: scaleY(0);
+}
+
+#nav-container input[type="checkbox"]:checked ~ #hamburger .line3 {
+    transform: rotate(-45deg);
+}
+
+#nav-container input[type="checkbox"]:checked ~ {
+    display: none;
+}
+
+#menu{
+    position: absolute;
+    top: 0px;
+    left: -1000px;
+    transition: transform 0.4s ease-in-out;
+    font-size: 60px;
+    background: rgba(255, 226, 226, 0.90);
+    list-style-type: none;
+    padding-right: 1em;
+    height: 100vh;
+    border-radius: 0 0 10% 0;
+}
+
+#menu ul li{
+    list-style-type: none;
+    padding: .6em;
+}
+
+#nav-container input[type="checkbox"]:checked ~ #menu {
+    transform: translateX(1000px);
+}
+
+#checkbox{
+    display: none;
+}
+
+main{
+    padding: 1rem;
+}
+
+h1{
+    justify-self: center;
+}
+
+a{
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    font-size: 50px;
+}
+
+#nav-container{
+    align-self: center;
+    justify-self: center;
+}
+
+#jaune{
+    color: rgb(252, 239, 76);
+    -webkit-text-stroke: #0e2431 1px;
+}
+
+#citron
+{
+    justify-self: center;
+    align-self: center;
+    background-image: url('img/citron.png');
+    height: 4rem;
+    width: 4rem;
+}
+
+#citron:hover
+{
+    background-image: url('img/citron_ombragé.png');
+}
+
+#citron:hover::after{
+    position: absolute;
+    content: "Six Troncs et le refus des Pim's Citron";
+    font-weight: bold;
+    top: 70px;
+    -webkit-text-stroke: #0e2431 0.25px;
+    color: rgb(252, 239, 76);
+    
+ 
+}
+
+@media (max-width: 700px) {
+    header{
+        padding-bottom: 2.5em;
+    }
+
+    #menu{
+        font-size: 3em;
+    }
+
+
+}
+
+
